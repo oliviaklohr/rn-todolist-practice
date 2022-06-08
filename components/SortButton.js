@@ -4,6 +4,8 @@ import SortAlpha from '../icons/arrow-down-a-z-solid.svg';
 import SortAlphaReverse from '../icons/arrow-down-z-a-solid.svg';
 
 export default SortButton = (props) => {
+  // convert this into a type
+  // const [sortDirection, setSortDirection] = useState<'asc' | 'dsc' | 'null'>(null);
   const [sortDirection, setSortDirection] = useState(false);
 
   const handleSortTasks = (tasks, sortDirection) => {
@@ -22,6 +24,7 @@ export default SortButton = (props) => {
         onPress={() => handleSortTasks(props.tasks, sortDirection)}
         style={styles.round}
       >
+        {/* {sortDirection === 'asc' ? <SortAlpha width={30} height={30} fill='#fff'/> : <SortAlphaReverse width={30} height={30} fill='#fff'/>} */}
         {sortDirection ? <SortAlpha width={30} height={30} fill='#fff'/> : <SortAlphaReverse width={30} height={30} fill='#fff'/>}
       </TouchableOpacity>
     </View>
@@ -31,8 +34,8 @@ export default SortButton = (props) => {
 const styles = StyleSheet.create({
   buttonContainer: {
     position: 'absolute',
-    left: 306,
-    top: 760,
+    bottom: 34,
+    right: 34,
   },
   round: {
     width: 50,

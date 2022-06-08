@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { KeyboardAvoidingView, StyleSheet, View, TextInput, Text, TouchableOpacity, } from "react-native";
 
-export default TaskInputField = (props) => {
+export default TaskInputField = ({ addTask }) => {
   const [task, setTask] = useState();
 
   const handleAddTask = (value) => {
-    props.addTask(value);
+    addTask(value);
     setTask(null);
   }
 
@@ -14,14 +14,14 @@ export default TaskInputField = (props) => {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}
     >
-    <TextInput
-      style={styles.inputField}
-      value={task}
-      onSubmitEditing={() => handleAddTask(task)}
-      onChangeText={text => setTask(text)}
-      placeholder={'New To Do'}
-      placeholderTextColor={'#d9d9d9'}
-    />
+      <TextInput
+        style={styles.inputField}
+        value={task}
+        onSubmitEditing={() => handleAddTask(task)}
+        onChangeText={text => setTask(text)}
+        placeholder={'New To Do'}
+        placeholderTextColor={'#d9d9d9'}
+      />
     </KeyboardAvoidingView>
   );
 }
@@ -40,8 +40,10 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   inputField: {
-      color: '#121212',
-      height: 32,
-      flex: 1,
+    color: '#121212',
+    height: 34,
+    flex: 1,
+    padding: 0,
+    margin: 0,
   },
 });

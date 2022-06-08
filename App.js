@@ -7,7 +7,6 @@
  */
 
 import React, {useState} from 'react';
-import type {Node} from 'react';
 import {
   Keyboard,
   ScrollView,
@@ -23,18 +22,21 @@ import Star from './icons/star-solid.svg';
 
 
 export default function App() {
+  // turn into object: { id, title, createdAt, completedAt }
   const [tasks, setTasks] = useState([]);
 
   const addTask = (task) => {
     if (task == null) return;
     setTasks([...tasks, task])
+    // might not want this if doing multi-adds
     Keyboard.dismiss();
   }
 
   const deleteTask = (deleteIndex) => {
-    setTimeout(() => setTasks(tasks.filter((value, index) => index != deleteIndex)), 2000);
+    setTimeout(() => setTasks(tasks.filter((value, index) => index !== deleteIndex)), 2000);
   }
 
+  // sort logic here...
   const sortTasks = (sorted) => {
     setTasks([...sorted])
   }
@@ -57,6 +59,7 @@ export default function App() {
           })
         }
       </ScrollView>
+      {/* don't pass tasks here, pass setTasks */}
       <SortButton tasks={tasks} sortTasks={() => sortTasks(tasks)}/>
     </View>
   );

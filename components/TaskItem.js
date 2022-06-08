@@ -13,9 +13,6 @@ export default TaskItem = (props) => {
           disabled={false}
           value={toggleCheckBox}
           onValueChange={() => props.deleteTask()}
-          boxType='square'
-          onAnimationType='one-stroke'
-          offAnimationType='one-stroke'
         />
       </View>
       <View style={styles.taskContainer}>
